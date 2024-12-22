@@ -3,12 +3,12 @@ using ChuongLibrary.GameDev;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class ScriptMovement : MonoBehaviour
+public class ScriptMovement : ChuongMonoSingleton<ScriptMovement>
 {
     private int _speed;
     private Vector3 _targetPosition;
 
-    private void Awake()
+    protected override void ResetValues()
     {
         var shipData = Resources.Load<ShipData>("MainShip"); // Get the speed value in data
         _speed = shipData.moveSpeed;

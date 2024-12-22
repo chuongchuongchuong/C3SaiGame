@@ -1,35 +1,24 @@
 using UnityEngine;
 
-public class ScriptInputManager : MonoBehaviour
+public class ScriptInputManager : ChuongMonoSingleton<ScriptInputManager>
 {
-    public static ScriptInputManager Instance { get; private set; }
-
     public Vector3 mouseWorldPos;
     public float onFiring;
+    public int weaponIndex = 1;
 
     [SerializeField] private Camera mainCamera;
 
-    private void Reset()
+    protected override void LoadObjects()
     {
         mainCamera = Camera.main;
-    }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Debug.LogWarning("More than one ScriptInputManager in scene.");
-            return;
-        }
-
-        Instance = this;
     }
 
     public void Update()
     {
         GetMousePosition();
-
         GetMouseDown();
+
+        GetWeaponIndex();
     }
 
     // Get the position of the mouse in World space
@@ -43,5 +32,11 @@ public class ScriptInputManager : MonoBehaviour
     private void GetMouseDown()
     {
         onFiring = Input.GetAxis("Fire1");
+    }
+
+    private void GetWeaponIndex()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) weaponIndex = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) weaponIndex = 2;
     }
 }
