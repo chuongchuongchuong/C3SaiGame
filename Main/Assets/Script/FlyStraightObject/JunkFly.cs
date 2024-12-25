@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class JunkFly : BaseFlyStraight
 {
-    protected override void ResetValues()
+    [SerializeField] private float rotationSpeed = 10;
+    private Transform model;
+
+    protected override void Awake_ResetValues()
     {
-        speed = 2f;
+        speed = 1f;
         direction = Vector2.right;
+    }
+
+    protected override void Awake_LoadObjects()
+    {
+        model = transform.parent.Find("Sprite");
+    }
+
+
+    private void FixedUpdate()
+    {
+        model.Rotate(rotationSpeed * Time.fixedDeltaTime * new Vector3(0, 0, 10));
     }
 }

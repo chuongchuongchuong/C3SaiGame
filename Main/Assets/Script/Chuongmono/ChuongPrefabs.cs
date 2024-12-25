@@ -6,9 +6,9 @@ public abstract class ChuongPrefabs : MonoBehaviour
 {
     protected virtual void Awake()
     {
-        ResetValues();
-        LoadObjects();
-        LoadComponents();
+        Awake_LoadObjects();
+        Awake_LoadComponents();
+        Awake_ResetValues();
     }
     
     // @formatter:off
@@ -16,15 +16,19 @@ public abstract class ChuongPrefabs : MonoBehaviour
     // @formatter:on
     protected virtual void Start()
     {
-        DisableUIObjects();
+        Start_DisableUIObjects();
         OnEnable();
     }
     
     
     // @formatter:off
-    protected virtual void LoadComponents(){}// Chuyên để load Component
-    protected virtual void LoadObjects(){}//Load các loại Object: GameObject, Prefabs,...
-    protected virtual void ResetValues(){}// lấy giá trị biến trong Scriptable Data, reset lại biến
-    protected virtual void DisableUIObjects(){}// SetActive(false) những UI cuối scene
+    protected virtual void Awake_LoadComponents(){}// Chuyên để load Component
+    protected virtual void Awake_LoadObjects(){}//Load các loại Object: GameObject, Prefabs,...
+    protected virtual void Awake_ResetValues(){}// lấy giá trị biến trong Scriptable Data, reset lại biến
+    protected virtual void Start_DisableUIObjects(){}// SetActive(false) những UI cuối scene
     // @formatter:on
+    
+    //Awake_LoadObjects() (Datatype): GameObject, Transform, Prefab, cho vào danh sách Transform, ...
+    //Awake_LoadComponents()(Datatype): Các loại Component, cả Mono, ...
+    //Awake_ResetValues() (Datatype): Reset lại giá trị của các biến nguyên thủy như int, float, ...
 }

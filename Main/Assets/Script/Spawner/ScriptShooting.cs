@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class ScriptShooting : BaseSpawner<ScriptShooting>
 {
+    [SerializeField] private Transform bulletPrefab;
     private float _fireRate; // fire speed
     private float _lastTimeShot;
 
-    protected override void ResetValues()
+    protected override void Reset_LoadObjects()
+    {
+        bulletPrefab = BulletsList.Instance.prefab;
+    }
+
+    protected override void Awake_ResetValues()
     {
         var shipData = Resources.Load<ShipData>("MainShip");
         _fireRate = shipData.fireRate;
@@ -14,7 +20,7 @@ public class ScriptShooting : BaseSpawner<ScriptShooting>
     protected override bool CanSpawn()
     {
         // if not pressin left click, nothing
-        if (ScriptInputManager.Instance.onFiring != 1) return false;
+        if (InputManager.Instance.onFiring != 1) return false;
         // if pressin left click, but not enough the cooldown time, nothing
         if (Time.time - _lastTimeShot < _fireRate) return false;
 
@@ -23,7 +29,7 @@ public class ScriptShooting : BaseSpawner<ScriptShooting>
 
     protected override void Spawn()
     {
-        ScriptBulletPoolObject.Instance.Spawn(transform.parent.position,
+        ScriptBulletPoolObject.Instance.Spawn(bulletPrefab, transform.parent.position,
             transform.parent.rotation);
 
         _lastTimeShot = Time.time;

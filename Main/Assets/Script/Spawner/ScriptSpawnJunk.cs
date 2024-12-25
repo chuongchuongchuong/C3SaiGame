@@ -14,22 +14,28 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
     private Quaternion spawnRotation;
     private Vector3 targetPosition;
     [SerializeField] private Camera _camera;
+    [SerializeField] private Transform junkPrefab;
 
-    protected override void ResetValues()
+    protected override void Awake_ResetValues()
     {
-        _spawnRate = .5f;
+        _spawnRate = 2f;
     }
 
-    protected override void LoadComponents()
+    protected override void Reset_LoadComponents()
     {
         _camera = Camera.main;
     }
 
+    protected override void Reset_LoadObjects()
+    {
+        junkPrefab = JunkList.Instance.prefab;
+    }
+
     protected override bool CanSpawn()
     {
-        /*// if not pressin left click, nothing
-        if (ScriptInputManager.Instance.onFiring != 1) return false;
-        // if pressin left click, but not enough the cooldown time, nothing*/
+        // if not pressin left click, nothing
+        //if (ScriptInputManager.Instance.onFiring != 1) return false;
+        // if pressin left click, but not enough the cooldown time, nothing
         if (Time.time - _lastTimeSpawned < _spawnRate) return false;
 
         return true;
@@ -37,13 +43,13 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
 
     protected override void Spawn()
     {
-        GetRandomPosition();
+        GetARandomSpawnPosition();
         GetTheSpawnRotation();
-        ScriptJunkPoolObject.Instance.Spawn(spawnPosition, spawnRotation);
+        ScriptJunkPoolObject.Instance.Spawn(junkPrefab, spawnPosition, spawnRotation);
         _lastTimeSpawned = Time.time;
     }
 
-    private void GetRandomPosition()
+    private void GetARandomSpawnPosition()
     {
         spawnPosition = Game2D.RandomPointOutsideScreen(_camera);
     }
@@ -53,10 +59,10 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
         targetPosition = Game2D.RandomPositionInCircle(_camera.transform.position, 3f);
         spawnRotation = Game2D.LookAtTarget(spawnPosition, targetPosition);
     }
-    
-    private void OnDrawGizmos()
+
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPosition, 0.3f);
-    }
+    }*/
 }

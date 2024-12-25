@@ -8,7 +8,7 @@ public class ScriptBullet1Despawn : BaseDespawner
 {
     public float spawnTime;
 
-    protected override void ResetValues()
+    protected override void Awake_ResetValues()
     {
         poolList = ScriptBulletPoolObject.Instance.poolList;
     }

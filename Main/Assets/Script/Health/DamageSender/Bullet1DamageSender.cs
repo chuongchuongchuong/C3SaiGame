@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkList : BaseList<JunkList>
+public class Bullet1DamageSender : BaseDamageSender
 {
 }

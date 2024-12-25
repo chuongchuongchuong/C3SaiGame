@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkList : BaseList<JunkList>
+public class Asteroid1DamageReceive : BaseDamageReceiver
 {
+    
 }
