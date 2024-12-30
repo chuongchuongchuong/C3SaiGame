@@ -9,12 +9,12 @@ public class ScriptJunkDespawn : BaseDespawner
     private Camera _mainCamera;
     [SerializeField] private float despawnDistance;
 
-    protected override void Awake_ResetValues()
+    protected override void ResetValues_Awake()
     {
         poolList = ScriptJunkPoolObject.Instance.poolList;
     }
 
-    protected override void Awake_LoadComponents()
+    protected override void LoadComponentsOutsidePrefab_Awake()
     {
         _mainCamera = Camera.main;
     }

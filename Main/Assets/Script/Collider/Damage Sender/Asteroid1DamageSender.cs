@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid1Health : BaseHealth
+public class Asteroid1DamageSender : BaseDamageSender
 {
     protected override void ResetValues_Awake()
     {
-        maxHealth = 10;
-        base.ResetValues_Awake();
+        damage = 8;
     }
 }

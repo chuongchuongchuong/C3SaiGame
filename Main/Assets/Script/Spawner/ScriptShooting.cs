@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class ScriptShooting : BaseSpawner<ScriptShooting>
 {
-    [SerializeField] private Transform bulletPrefab;
     private float _fireRate; // fire speed
     private float _lastTimeShot;
 
-    protected override void Reset_LoadObjects()
-    {
-        bulletPrefab = BulletsList.Instance.prefab;
-    }
-
-    protected override void Awake_ResetValues()
+    protected override void ResetValues_Awake()
     {
         var shipData = Resources.Load<ShipData>("MainShip");
         _fireRate = shipData.fireRate;
@@ -29,8 +23,8 @@ public class ScriptShooting : BaseSpawner<ScriptShooting>
 
     protected override void Spawn()
     {
-        ScriptBulletPoolObject.Instance.Spawn(bulletPrefab, transform.parent.position,
-            transform.parent.rotation);
+        ScriptBulletPoolObject.Instance.Spawn(BulletsList.Instance.prefab,
+            transform.position, transform.parent.rotation);
 
         _lastTimeShot = Time.time;
     }

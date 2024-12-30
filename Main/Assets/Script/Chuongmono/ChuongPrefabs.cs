@@ -4,16 +4,24 @@ using UnityEngine;
 
 public abstract class ChuongPrefabs : MonoBehaviour
 {
+    protected void Reset()
+    {
+        LoadObjects_ResetInPrefab();
+        LoadComponents_ResetInPrefab();
+    }
+
     protected virtual void Awake()
     {
-        Awake_LoadObjects();
-        Awake_LoadComponents();
-        Awake_ResetValues();
+        LoadObjectsOutsidePrefab_Awake();
+        LoadComponentsOutsidePrefab_Awake();
+        ResetValues_Awake();
     }
-    
-    // @formatter:off
-    protected virtual void OnEnable() {}
-    // @formatter:on
+
+    protected virtual void OnEnable()
+    {
+        return;
+    }
+
     protected virtual void Start()
     {
         Start_DisableUIObjects();
@@ -22,13 +30,16 @@ public abstract class ChuongPrefabs : MonoBehaviour
     
     
     // @formatter:off
-    protected virtual void Awake_LoadComponents(){}// Chuyên để load Component
-    protected virtual void Awake_LoadObjects(){}//Load các loại Object: GameObject, Prefabs,...
-    protected virtual void Awake_ResetValues(){}// lấy giá trị biến trong Scriptable Data, reset lại biến
-    protected virtual void Start_DisableUIObjects(){}// SetActive(false) những UI cuối scene
+    protected virtual void LoadComponents_ResetInPrefab(){}
+    protected virtual void LoadObjects_ResetInPrefab(){}
+    protected virtual void LoadComponentsOutsidePrefab_Awake(){}
+    protected virtual void LoadObjectsOutsidePrefab_Awake(){}
+    protected virtual void ResetValues_Awake(){}
+    protected virtual void Start_DisableUIObjects(){}
     // @formatter:on
-    
-    //Awake_LoadObjects() (Datatype): GameObject, Transform, Prefab, cho vào danh sách Transform, ...
-    //Awake_LoadComponents()(Datatype): Các loại Component, cả Mono, ...
-    //Awake_ResetValues() (Datatype): Reset lại giá trị của các biến nguyên thủy như int, float, ...
+
+    //LoadObjects() (Datatype): GameObject, Transform, Prefab, List<Transform>, ...
+    //LoadComponents()(Datatype): Các loại Component, Monobihaviour, ...
+    //ResetValues() (Datatype): Reset lại giá trị của các biến nguyên thủy như int, float, ...
+    //DisableUIObjects() (Datatype): Tắt các UI chính của game
 }

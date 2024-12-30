@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class PlayerHealth : BaseHealth
 {
-    protected override void Awake_LoadComponents()
-    {
-        base.Awake_LoadComponents();
-    }
 }

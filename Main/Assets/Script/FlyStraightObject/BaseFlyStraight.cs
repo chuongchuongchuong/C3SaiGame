@@ -5,7 +5,8 @@ using UnityEngine.PlayerLoop;
 
 public class BaseFlyStraight : ChuongPrefabs
 {
-    protected float speed; // tốc độ bay
+    [Header("BaseFlyStraight")]
+    [SerializeField] protected float speed; // tốc độ bay
     protected Vector2 direction; // hướng bay
 
     private void Update()

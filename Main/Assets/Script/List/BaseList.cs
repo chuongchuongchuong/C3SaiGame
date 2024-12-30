@@ -9,7 +9,7 @@ public abstract class BaseList<T> : ChuongMonoSingleton<T> where T : BaseList<T>
     public Transform prefab;
 
 
-    protected override void Reset_LoadObjects()
+    protected override void LoadObjects_Reset()
     {
         //Load weaponList
         foreach (Transform child in transform)

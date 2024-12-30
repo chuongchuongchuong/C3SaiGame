@@ -7,7 +7,7 @@ public class InputManager : ChuongMonoSingleton<InputManager>
 
     [SerializeField] private Camera mainCamera;
 
-    protected override void Reset_LoadObjects()
+    protected override void LoadObjects_Reset()
     {
         mainCamera = Camera.main;
     }

@@ -5,15 +5,15 @@ using UnityEngine;
 public class JunkFly : BaseFlyStraight
 {
     [SerializeField] private float rotationSpeed = 10;
-    private Transform model;
+    [SerializeField] private Transform model;
 
-    protected override void Awake_ResetValues()
+    protected override void ResetValues_Awake()
     {
-        speed = 1f;
+        speed = 2f;
         direction = Vector2.right;
     }
 
-    protected override void Awake_LoadObjects()
+    protected override void LoadObjects_ResetInPrefab()
     {
         model = transform.parent.Find("Sprite");
     }

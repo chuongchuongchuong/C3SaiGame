@@ -8,7 +8,7 @@ public class playerMovement : ChuongMonoSingleton<playerMovement>
     private int _speed;
     private Vector3 _targetPosition;
 
-    protected override void Awake_ResetValues()
+    protected override void ResetValues_Awake()
     {
         var shipData = Resources.Load<ShipData>("MainShip"); // Get the speed value in data
         _speed = shipData.moveSpeed;

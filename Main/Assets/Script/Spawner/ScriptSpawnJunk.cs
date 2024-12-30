@@ -16,17 +16,17 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform junkPrefab;
 
-    protected override void Awake_ResetValues()
+    protected override void ResetValues_Awake()
     {
-        _spawnRate = 2f;
+        _spawnRate = 1f;
     }
 
-    protected override void Reset_LoadComponents()
+    protected override void LoadComponents_Reset()
     {
         _camera = Camera.main;
     }
 
-    protected override void Reset_LoadObjects()
+    protected override void LoadObjects_Reset()
     {
         junkPrefab = JunkList.Instance.prefab;
     }
@@ -34,7 +34,7 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
     protected override bool CanSpawn()
     {
         // if not pressin left click, nothing
-        //if (ScriptInputManager.Instance.onFiring != 1) return false;
+        //if (InputManager.Instance.onFiring != 1) return false;
         // if pressin left click, but not enough the cooldown time, nothing
         if (Time.time - _lastTimeSpawned < _spawnRate) return false;
 
@@ -60,9 +60,9 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
         spawnRotation = Game2D.LookAtTarget(spawnPosition, targetPosition);
     }
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPosition, 0.3f);
-    }*/
+    }
 }

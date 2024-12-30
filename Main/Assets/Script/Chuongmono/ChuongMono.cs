@@ -7,31 +7,32 @@ public abstract class ChuongMono : MonoBehaviour
     protected virtual void Reset()
     {
         GuaranteeSingleton();
-        Reset_LoadObjects();
-        Reset_LoadComponents();
+        LoadObjects_Reset();
+        LoadComponents_Reset();
     }
 
     protected virtual void Awake()
     {
         GuaranteeSingleton();
-        Awake_ResetValues();
+        ResetValues_Awake();
     }
 
     protected virtual void Start()
     {
-        Start_DisableUIObjects();
+        DisableUIObjects_Start();
     }
     
     
     // @formatter:off
-    protected virtual void GuaranteeSingleton(){}//Dành cho ChuongMonoSingleton override vào
-    protected virtual void Reset_LoadComponents(){}// Chuyên để load Component
-    protected virtual void Reset_LoadObjects(){}//Load các loại Object: GameObject, Prefabs,...
-    protected virtual void Awake_ResetValues(){}// lấy giá trị biến trong Scriptable Data, reset lại biến
-    protected virtual void Start_DisableUIObjects(){}// SetActive(false) những UI cuối scene
+    protected virtual void GuaranteeSingleton(){}
+    protected virtual void LoadComponents_Reset(){}
+    protected virtual void LoadObjects_Reset(){}
+    protected virtual void ResetValues_Awake(){}
+    protected virtual void DisableUIObjects_Start(){}
     // @formatter:on
 
-    //Reset_LoadObjects() (Datatype): GameObject, Transform, Prefab, cho vào danh sách Transform, ...
-    //Reset_LoadComponents()(Datatype): Các loại Component, cả Mono, ...
-    //Awake_ResetValues() (Datatype): Reset lại giá trị của các biến nguyên thủy như int, float, ...
+    //LoadObjects() (Datatype): GameObject, Transform, Prefab, List<Transform>, ...
+    //LoadComponents()(Datatype): Các loại Component, Monobihaviour, ...
+    //ResetValues() (Datatype): Reset lại giá trị của các biến nguyên thủy như int, float, ...
+    //DisableUIObjects() (Datatype): Tắt các UI chính của game
 }
