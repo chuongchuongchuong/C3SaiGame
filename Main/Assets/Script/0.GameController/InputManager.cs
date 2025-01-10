@@ -1,7 +1,22 @@
 using UnityEngine;
 
-public class InputManager : ChuongMonoSingleton<InputManager>
+public class InputManager : ChuongMono
 {
+    #region Singleton Implementation
+    public static InputManager Instance { get; private set; }
+
+    protected override void GuaranteeSingleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("More than one " + GetType().Name + " in scene.");
+            return;
+        }
+
+        Instance = this;
+    }
+    #endregion
+    
     public Vector3 mouseWorldPos;
     public float onFiring;
 

@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class ScriptShooting : BaseSpawner<ScriptShooting>
+public class ScriptShooting : BaseSpawner
 {
     private float _fireRate; // fire speed
     private float _lastTimeShot;
 
     protected override void ResetValues_Awake()
     {
-        var shipData = Resources.Load<ShipData>("ScriptableObject/MainShip");
+        var shipData = Resources.Load<ShipData>(StringsKeeper.MainShipDataPath);
         _fireRate = shipData.fireRate;
     }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class BasePoolPattern<T> : ChuongMonoSingleton<T> where T : BasePoolPattern<T>
+public abstract class BasePoolPattern : ChuongMono
 {
     public List<Transform> poolList = new();
 

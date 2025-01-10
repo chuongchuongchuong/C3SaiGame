@@ -3,14 +3,31 @@ using ChuongLibrary.GameDev;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class playerMovement : ChuongMonoSingleton<playerMovement>
+public class playerMovement : ChuongMono
 {
+    #region Singleton Implementation
+
+    public static playerMovement Instance { get; private set; }
+
+    protected override void GuaranteeSingleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("More than one " + GetType().Name + " in scene.");
+            return;
+        }
+
+        Instance = this;
+    }
+
+    #endregion
+
     private int _speed;
     private Vector3 _targetPosition;
 
     protected override void ResetValues_Awake()
     {
-        var shipData = Resources.Load<ShipData>("ScriptableObject/MainShip"); // Get the speed value in data
+        var shipData = Resources.Load<ShipData>(StringsKeeper.MainShipDataPath); // Get the speed value in data
         _speed = shipData.moveSpeed;
     }
 
@@ -19,15 +36,13 @@ public class playerMovement : ChuongMonoSingleton<playerMovement>
         GetTargerPosition();
         Game2D.LookAtTarget(transform.parent, _targetPosition);
         FollowTarget();
-
-        
     }
 
     private void GetTargerPosition()
     {
         _targetPosition = InputManager.Instance.mouseWorldPos; // Get the mouse position
     }
-    
+
 
     private void FollowTarget()
     {

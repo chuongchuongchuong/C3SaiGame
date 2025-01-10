@@ -21,8 +21,8 @@ public class AsteroidDeath : ChuongPrefabs
     private void OnDeath()
     {
         //Drop Item
-        DropItemPoolObject.Instance.Spawn(DropList.Instance.prefab,
-            transform.position, Quaternion.identity);
+        /*DropItemPoolObject.Instance.Spawn(DropList.Instance.prefab,
+            transform.position, Quaternion.identity);*/
         
         //Get back to pool object
         despawner.Despawn();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseSpawner<T> : ChuongMonoSingleton<T> where T : BaseSpawner<T>
+public abstract class BaseSpawner : ChuongMono
 {
     protected virtual void Update()
     {

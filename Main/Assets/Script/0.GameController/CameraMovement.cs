@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ChuongLibrary.GameDev;
 
-public class CameraMovement : ChuongMonoSingleton<CameraMovement>
+public class CameraMovement : ChuongMono
 {
     private int _speed = 5;
     private Vector3 _targetPosition;

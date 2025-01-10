@@ -5,8 +5,25 @@ using ChuongLibrary.GameDev;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
+public class ScriptSpawnJunk : BaseSpawner
 {
+    #region Singleton Implementation
+
+    public static ScriptSpawnJunk Instance { get; private set; }
+
+    protected override void GuaranteeSingleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("More than one " + GetType().Name + " in scene.");
+            return;
+        }
+
+        Instance = this;
+    }
+
+    #endregion
+
     private float _spawnRate; // Spawn speed
     private float _lastTimeSpawned;
     public int spawnedCount;
@@ -40,12 +57,18 @@ public class ScriptSpawnJunk : BaseSpawner<ScriptSpawnJunk>
 
     protected override void Spawn()
     {
-        junkPrefab = JunkList.Instance.GetRandomPrefab();
+        GetRandomJunk();
         GetARandomSpawnPosition();
         GetTheSpawnRotation();
         ScriptJunkPoolObject.Instance.Spawn(junkPrefab, spawnPosition, spawnRotation);
         _lastTimeSpawned = Time.time;
         spawnedCount++;
+    }
+
+    private void GetRandomJunk()
+    {
+        JunkList.Instance.GetRandomPrefab();
+        junkPrefab = JunkList.Instance.prefab;
     }
 
     private void GetARandomSpawnPosition()
