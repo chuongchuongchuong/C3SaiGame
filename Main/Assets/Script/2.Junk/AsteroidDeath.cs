@@ -6,6 +6,7 @@ public class AsteroidDeath : ChuongPrefabs
 {
     [SerializeField] private BaseHealth health;
     [SerializeField] private ScriptJunkDespawn despawner;
+
     protected override void LoadComponents_ResetInPrefab()
     {
         health = transform.parent.GetComponentInChildren<BaseHealth>();
@@ -15,16 +16,16 @@ public class AsteroidDeath : ChuongPrefabs
     private void Update()
     {
         if (!health.IsDead()) return;
-        OnDeath();
+        despawner.Despawn(); //Get back to pool object
+
+        OnDeathDrop();
     }
 
-    private void OnDeath()
+    private void OnDeathDrop()
     {
-        //Drop Item
-        /*DropItemPoolObject.Instance.Spawn(DropList.Instance.prefab,
-            transform.position, Quaternion.identity);*/
-        
-        //Get back to pool object
-        despawner.Despawn();
+        var dropPrefab = DropList.Instance.DropItem();
+        if (dropPrefab == null) return;
+        DropItemPoolObject.Instance.Spawn(dropPrefab.transform,
+            transform.position, Quaternion.identity);
     }
 }

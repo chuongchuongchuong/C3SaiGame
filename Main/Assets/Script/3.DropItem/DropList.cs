@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropList : BaseList<DropItemData>
+public class DropList : BaseList<DropItemDataStruct>
 {
     #region Singleton Implementation
 
@@ -21,20 +21,21 @@ public class DropList : BaseList<DropItemData>
 
     #endregion
 
-    public DropItemData DropItemData;
-
     protected override void LoadObjects_Reset()
     {
-        DropItemData = Resources.Load<DropItemData>(StringsKeeper.DropItemDataPath);
+        List = Resources.Load<DropItemData>(StringsKeeper.DropItemDataPath).ItemDataList;
     }
 
 
-    /*public Transform DropItem()
+    public GameObject DropItem()
     {
         var ramdomNum = Random.Range(0f, 100f);
-        for (var i = prefabsList.Count - 1; i >= 0; i--)
+        Debug.Log(ramdomNum);
+        for (var i = List.Count - 1; i >= 0; i--)
         {
-            if (ramdomNum <= prefabsList[i].droprate) return prefabsList[i];
+            if (ramdomNum <= List[i].dropRate) return List[i].prefab;
         }
-    }*/
+
+        return null;
+    }
 }
