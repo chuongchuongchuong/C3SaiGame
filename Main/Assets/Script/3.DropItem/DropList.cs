@@ -23,7 +23,7 @@ public class DropList : BaseList<DropItemDataStruct>
 
     protected override void LoadObjects_Reset()
     {
-        List = Resources.Load<DropItemData>(StringsKeeper.DropItemDataPath).ItemDataList;
+        List = Resources.Load<DropItemData>(StringKeeper.DropItemDataPath).ItemDataList;
     }
 
 

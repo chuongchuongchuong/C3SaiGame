@@ -6,7 +6,7 @@ public class DamageReceiver : MonoBehaviour
 {
     public BaseHealth health;
 
-    void Awake()
+    private void Reset()
     {
         health = transform.parent.GetComponentInChildren<BaseHealth>();
     }

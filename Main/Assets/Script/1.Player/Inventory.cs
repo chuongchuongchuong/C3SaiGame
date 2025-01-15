@@ -5,37 +5,72 @@ using UnityEngine;
 public class Inventory : ChuongMono
 {
     [SerializeField] protected int maxSlot = 70;
-    [SerializeField] protected List<ItemInventoryStruct> Items;
+    [SerializeField] protected List<LootSlot> LootList;
 
 
     [ContextMenu("Add Item")]
-    protected bool AddItem(ItemCode code, int addCount)
+    protected void Add() => AddItem(ItemName.Sword, 3);
+
+
+    public void AddItem(ItemName itemName, int addAmount = 1)
     {
-        var item = GetItembyCode(code);
-        var newCount = item.itemCount + addCount;
-        if (newCount > item.maxStack) return false;
-        item.itemCount = newCount;
-        return true;
+        var pickedItem = LootList.Find((item) => item.ItemProfile.itemName == itemName);
+        if (IsPickTheSameItem(pickedItem))
+            StackthatItemintoLootList(pickedItem, addAmount);
+        AddNewItemintoLootList(itemName, addAmount);
     }
 
-    public virtual ItemInventoryStruct GetItembyCode(ItemCode code)
+    protected bool IsPickTheSameItem(LootSlot pickedItem) => pickedItem != null;
+
+    protected void StackthatItemintoLootList(LootSlot pickedItem, int addAmount = 1)
     {
-        var item = Items.Find((item) => item.ItemProfile.itemCode == code);
-        if (item == null) item = AddEmptyProfile(code);
-        return item;
+        if (pickedItem.stackCount == pickedItem.maxStack) return;
+        var newCount = pickedItem.stackCount + addAmount;
+        if (newCount > pickedItem.maxStack) newCount = pickedItem.maxStack;
+        pickedItem.stackCount = newCount;
     }
 
-    public virtual ItemInventoryStruct AddEmptyProfile(ItemCode code)
+    protected void AddNewItemintoLootList(ItemName itemName, int addAmount = 1)
     {
-        var profiles = Resources.LoadAll<ItemProfileSO>("Itempprofiles");
+        var profiles = Resources.LoadAll<Item>(StringKeeper.ItemPathFolder);
+        foreach (var profile in profiles)
+        {
+            if (profile.itemName != itemName) continue;
+            var newLootITem = new LootSlot
+            {
+                ItemProfile = profile,
+                //maxStack = profile.defaultMaxStack
+                stackCount = addAmount
+            };
+            newLootITem.GetDaMaxStack();
+            
+            LootList.Add(newLootITem);
+            return;
+        }
+
+        Debug.Log("New picked item not Found:" + itemName);
     }
 }
 
-
-
-public class ItemInventoryStruct
+public class LootSlot
 {
-    public ItemProfileSO ItemProfile;
-    public int itemCount;
-    public int maxStack = 7;
+    public Item ItemProfile;
+    public int stackCount;
+    public int maxStack;
+
+    public void GetDaMaxStack()
+    {
+        switch (ItemProfile.itemName)
+        {
+            case ItemName.Axe :
+                maxStack = 7;
+                break;
+            case ItemName.Sword:
+                maxStack = 6;
+                break;
+            case ItemName.Key:
+                maxStack = 4;
+                break;
+        }
+    }
 }

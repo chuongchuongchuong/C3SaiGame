@@ -5,5 +5,5 @@ using UnityEngine;
 public class Asteroid1Controller : BaseAsteroidController
 {
     protected override float GetAsteroidSize() =>
-        Resources.Load<AsteroidData>(StringsKeeper.AsteroidDataPath).asteroid[0].asteroidSize;
+        Resources.Load<AsteroidData>(StringKeeper.AsteroidDataPath).asteroid[0].asteroidSize;
 }

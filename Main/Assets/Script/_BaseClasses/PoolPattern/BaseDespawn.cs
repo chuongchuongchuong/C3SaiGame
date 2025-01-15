@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseDespawner : ChuongPrefabs
+public class BaseDespawn : ChuongPrefabs
 {
     protected MonoBehaviour forGetPoollist;
     protected List<Transform> poolList;
@@ -13,10 +13,7 @@ public class BaseDespawner : ChuongPrefabs
         if (!CanDespawn()) return;
         Despawn();
     }
-    
-    // @formatter:off
     protected virtual bool CanDespawn() => false;
-    // @formatter:on
     public virtual void Despawn()
     {
         poolList.Add(transform.parent);

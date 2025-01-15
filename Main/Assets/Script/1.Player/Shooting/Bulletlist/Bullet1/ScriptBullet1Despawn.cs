@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ScriptBullet1Despawn : BaseDespawner
+public class ScriptBullet1Despawn : BaseDespawn
 {
     public float spawnTime;
 

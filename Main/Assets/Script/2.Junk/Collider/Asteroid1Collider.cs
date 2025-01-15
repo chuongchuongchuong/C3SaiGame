@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Asteroid1Collider : BaseCollider
 {
-    protected override void ResetValues_Awake()
+    protected override void ResetValues_Awake() => ResetCollider();
+    
+    private void ResetCollider()
     {
         var circleCollider = GetComponent<CircleCollider2D>();
         circleCollider.radius = 0.15f;

@@ -7,7 +7,7 @@ public class BulletFly : BaseFlyStraight
 {
     protected override void ResetValues_Awake()
     {
-        speed = Resources.Load<ShipData>(StringsKeeper.MainShipDataPath).bulletSpeed;
+        speed = Resources.Load<ShipData>(StringKeeper.MainShipDataPath).bulletSpeed;
         direction = Vector2.right;
     }
 }

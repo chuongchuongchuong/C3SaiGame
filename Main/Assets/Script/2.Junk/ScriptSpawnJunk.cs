@@ -5,7 +5,7 @@ using ChuongLibrary.GameDev;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class ScriptSpawnJunk : BaseSpawner
+public class ScriptSpawnJunk : BaseSpawn
 {
     #region Singleton Implementation
 

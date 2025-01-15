@@ -4,7 +4,7 @@ using System.Text;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class ScriptJunkDespawn : BaseDespawner
+public class ScriptJunkDespawn : BaseDespawn
 {
     private Camera _mainCamera;
     [SerializeField] private float despawnDistance;
@@ -19,18 +19,17 @@ public class ScriptJunkDespawn : BaseDespawner
     {
         _mainCamera = Camera.main;
     }
-
-
-    protected override bool CanDespawn() =>
-        Vector2.Distance(transform.parent.position, _mainCamera.transform.parent.position) >=
-        despawnDistance;
-
+    
     protected override void Update()
     {
         //Debug.Log(CanDespawn());
         if (!CanDespawn()) return;
         Despawn();
     }
+    
+    protected override bool CanDespawn() =>
+        Vector2.Distance(transform.parent.position, _mainCamera.transform.parent.position) >=
+        despawnDistance;
 
     public override void Despawn()
     {

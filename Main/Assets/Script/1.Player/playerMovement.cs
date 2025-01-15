@@ -27,7 +27,7 @@ public class playerMovement : ChuongMono
 
     protected override void ResetValues_Awake()
     {
-        var shipData = Resources.Load<ShipData>(StringsKeeper.MainShipDataPath); // Get the speed value in data
+        var shipData = Resources.Load<ShipData>(StringKeeper.MainShipDataPath); // Get the speed value in data
         _speed = shipData.moveSpeed;
     }
 
