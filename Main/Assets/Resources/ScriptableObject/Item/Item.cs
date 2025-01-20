@@ -18,6 +18,7 @@ public enum ItemName
     Sword,
     Axe,
     Key,
+    BluePotion,
 }
 
 public enum ItemType

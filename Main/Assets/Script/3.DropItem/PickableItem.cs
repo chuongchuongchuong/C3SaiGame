@@ -5,7 +5,6 @@ using UnityEngine;
 public class PickableItem : ChuongPrefabs
 {
     public BaseDespawn despawner;
-    public ItemName itemName;
 
     protected override void LoadComponents_ResetInPrefab()
     {

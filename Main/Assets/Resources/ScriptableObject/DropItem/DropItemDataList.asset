@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: DropItemDataList
   m_EditorClassIdentifier: 
   ItemDataList:
+  - prefab: {fileID: 5775807220526221118, guid: 9264365c311364c40ba9c3777ea64638, type: 3}
+    dropRate: 80
   - prefab: {fileID: 6032948853680750583, guid: df85e9dbcb6c4934d9175dce10d21500, type: 3}
     dropRate: 40
   - prefab: {fileID: 2784410588801193179, guid: 62cecdba934a0dc4ca4d3f6a687bc1db, type: 3}
-    dropRate: 30
+    dropRate: 20
   - prefab: {fileID: 5775807220526221118, guid: 5a18e8b7a7da72f49a9372ac9e80335f, type: 3}
     dropRate: 10

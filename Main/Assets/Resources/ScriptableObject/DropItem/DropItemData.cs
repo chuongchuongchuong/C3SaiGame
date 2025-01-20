@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "DropItem")]
@@ -15,3 +16,4 @@ public struct DropItemDataStruct
     public GameObject prefab;
     public int dropRate;
 }
+

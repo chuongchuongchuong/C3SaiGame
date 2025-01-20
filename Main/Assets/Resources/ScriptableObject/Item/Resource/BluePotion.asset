@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f76476018ebb044a99df5bc9d36b304, type: 3}
-  m_Name: New Item Profile SO
+  m_Name: BluePotion
   m_EditorClassIdentifier: 
-  itemCode: 0
-  itemType: 0
-  itemName: 
-  defaultMaxStack: 7
+  itemName: 4
+  prefab: {fileID: 5775807220526221118, guid: 9264365c311364c40ba9c3777ea64638, type: 3}
+  itemType: 1
