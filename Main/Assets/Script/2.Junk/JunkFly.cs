@@ -7,15 +7,15 @@ public class JunkFly : BaseFlyStraight
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] private Transform model;
 
-    protected override void ResetValues_Awake()
+    protected override void Awake_ResetValues()
     {
         speed = 2f;
         direction = Vector2.right;
     }
 
-    protected override void LoadObjects_ResetInPrefab()
+    protected override void Reset_LoadObjects()
     {
-        model = transform.parent.Find("Sprite");
+        model = transform.parent.GetChild(0);
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseAsteroidHealth : BaseHealth
 {
-    protected override void OnEnable()
+    protected void OnEnable()
     {
         healthPoint = maxHealth;
     }

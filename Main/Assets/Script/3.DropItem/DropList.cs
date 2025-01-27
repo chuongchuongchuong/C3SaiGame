@@ -21,7 +21,7 @@ public class DropList : BaseList<DropItemDataStruct>
 
     #endregion
 
-    protected override void LoadObjects_Reset()
+    protected override void Reset_LoadObjects()
     {
         List = Resources.Load<DropItemData>(StringKeeper.DropItemDataPath).ItemDataList;
     }

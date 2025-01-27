@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Asteroid2Health : BaseAsteroidHealth
 {
-    protected override void ResetValues_Awake()
+    protected override void Awake_ResetValues()
     {
         var takeData = Resources.Load<AsteroidData>(StringKeeper.AsteroidDataPath);
         maxHealth = takeData.asteroid[1].asteroidHealth;
-        base.ResetValues_Awake();
+        base.Awake_ResetValues();
     }
 }

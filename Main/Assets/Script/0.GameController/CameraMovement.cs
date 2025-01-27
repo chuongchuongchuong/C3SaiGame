@@ -16,7 +16,7 @@ public class CameraMovement : ChuongMono
 
     private void GetTargerPosition()
     {
-        _targetPosition = playerMovement.Instance.transform.parent.position; // Get Player position
+        _targetPosition = PlayerCenter.Instance.transform.position; // Get Player position
         _targetPosition.z = -10;
     }
 

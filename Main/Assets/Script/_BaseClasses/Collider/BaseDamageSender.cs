@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseDamageSender : ChuongPrefabs
+public class BaseDamageSender : ChuongMono
 {
     [Header("Base Damage Sender")]
     [SerializeField] protected int damage; //child class need to set value

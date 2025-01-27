@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseDespawn : ChuongPrefabs
+public class BaseDespawn : ChuongMono
 {
-    protected MonoBehaviour forGetPoollist;
+    //protected MonoBehaviour forGetPoollist;
     protected List<Transform> poolList;
 
     protected virtual void Update()

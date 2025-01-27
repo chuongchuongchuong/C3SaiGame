@@ -20,4 +20,13 @@ public class DropItemPoolObject : BasePoolPattern
     }
 
     #endregion
+
+    public void DropItemFromInventory(Equipment equipment, Vector2 position)
+    {
+        var newSpawn =
+            Instantiate(equipment.itemProfile.prefab, position, Quaternion.identity, transform);
+        newSpawn.gameObject.SetActive(true);
+
+        newSpawn.GetComponent<EquipmentInfo>().equipment = equipment;
+    }
 }

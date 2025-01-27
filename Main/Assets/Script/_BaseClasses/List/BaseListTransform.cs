@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseListTransform : BaseList<Transform>
 {
     public Transform prefab;
-    protected override void LoadObjects_Reset()
+    protected override void Reset_LoadObjects()
     {
         foreach (Transform child in transform)
         {

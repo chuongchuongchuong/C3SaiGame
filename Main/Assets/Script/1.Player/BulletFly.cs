@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BulletFly : BaseFlyStraight
 {
-    protected override void ResetValues_Awake()
+    protected override void Awake_ResetValues()
     {
         speed = Resources.Load<ShipData>(StringKeeper.MainShipDataPath).bulletSpeed;
         direction = Vector2.right;

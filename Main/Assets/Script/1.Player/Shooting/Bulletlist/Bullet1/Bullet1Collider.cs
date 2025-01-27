@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bullet1Collider : BaseCollider
 {
-    protected override void ResetValues_Awake() => ResetCollider();
+    //[SerializeField] protected new BaseDamageSender damageSender;
+    protected override void Awake_ResetValues() => ResetCollider();
 
     private void ResetCollider()
     {

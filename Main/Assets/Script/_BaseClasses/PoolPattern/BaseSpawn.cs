@@ -6,8 +6,7 @@ public abstract class BaseSpawn : ChuongMono
 {
     protected virtual void Update()
     {
-        if (CanSpawn())
-            Spawn();
+        if (CanSpawn()) Spawn();
     }
 
     // @formatter:off

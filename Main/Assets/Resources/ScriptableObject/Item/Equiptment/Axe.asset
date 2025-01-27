@@ -15,3 +15,12 @@ MonoBehaviour:
   itemName: 2
   prefab: {fileID: 2784410588801193179, guid: 62cecdba934a0dc4ca4d3f6a687bc1db, type: 3}
   itemType: 2
+  Uplevelrecipes:
+  - ingredients:
+    - item: {fileID: 11400000, guid: 6a44e4b0d3403c54ea194d42201951c6, type: 2}
+      amount: 4
+  - ingredients:
+    - item: {fileID: 11400000, guid: 6a44e4b0d3403c54ea194d42201951c6, type: 2}
+      amount: 4
+    - item: {fileID: 11400000, guid: 8fa3aae3cb2ed4e4a95175110c120714, type: 2}
+      amount: 1

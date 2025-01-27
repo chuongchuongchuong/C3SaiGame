@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5066176290733757468}
   - component: {fileID: 462646578130146885}
-  - component: {fileID: 1270901850065593773}
   - component: {fileID: 3888176819080992543}
+  - component: {fileID: 5149439529577500160}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -50,20 +50,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1270901850065593773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086217761484054416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a65a1043a2a13489db4ad508467ad2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageSender: {fileID: 0}
-  looter: {fileID: 0}
 --- !u!114 &3888176819080992543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +63,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 5628426525442816335}
+--- !u!114 &5149439529577500160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086217761484054416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db118308568dc2d4aa437a135b1a0cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSender: {fileID: 0}
 --- !u!1 &2125695484079842124
 GameObject:
   m_ObjectHideFlags: 0

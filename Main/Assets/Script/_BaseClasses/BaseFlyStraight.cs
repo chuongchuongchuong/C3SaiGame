@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class BaseFlyStraight : ChuongPrefabs
+public class BaseFlyStraight : ChuongMono
 {
     [Header("BaseFlyStraight")]
     [SerializeField] protected float speed; // tốc độ bay

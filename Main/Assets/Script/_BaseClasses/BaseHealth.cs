@@ -2,18 +2,15 @@
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public abstract class BaseHealth : ChuongPrefabs
+public abstract class BaseHealth : ChuongMono
 {
     [SerializeField] protected int maxHealth; // biến cần gán trong class con
     public int healthPoint;
     public bool isReceiveDamage = true;
 
-    protected override void ResetValues_Awake()
-    {
-        healthPoint = maxHealth;
-    }
+    protected override void Awake_ResetValues() => healthPoint = maxHealth;
 
-    public void TakeDamage(int damage) // nhận sát thương
+    public virtual void TakeDamage(int damage) // nhận sát thương
     {
         if (!isReceiveDamage) return;
         
@@ -21,11 +18,11 @@ public abstract class BaseHealth : ChuongPrefabs
         if (healthPoint < 0) healthPoint = 0;
     }
 
-    public void HealHealth(int heal) // Hồi máu
+    public virtual void HealHealth(int heal) // Hồi máu
     {
         healthPoint += heal;
         if (healthPoint > maxHealth) healthPoint = maxHealth;
     }
 
-    public bool IsDead() => (healthPoint == 0); // máu ít hơn 0 thì chết
+    public virtual bool IsDead() => healthPoint == 0; // máu ít hơn 0 thì chết
 }

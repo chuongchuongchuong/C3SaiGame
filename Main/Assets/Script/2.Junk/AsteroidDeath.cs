@@ -1,27 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidDeath : ChuongPrefabs
+public class AsteroidDeath : ChuongMono
 {
     [SerializeField] private BaseHealth health;
-    [SerializeField] private ScriptJunkDespawn despawner;
+    [SerializeField] private JunkDespawn despawner;
 
-    protected override void LoadComponents_ResetInPrefab()
+    protected override void Reset_LoadComponents()
     {
         health = transform.parent.GetComponentInChildren<BaseHealth>();
-        despawner = GetComponent<ScriptJunkDespawn>();
+        despawner = GetComponent<JunkDespawn>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!health.IsDead()) return;
         despawner.Despawn(); //Get back to pool object
-
-        OnDeathDrop();
     }
 
-    private void OnDeathDrop()
+    protected virtual void OnDisable() => OnDeathDrop();
+
+    protected virtual void OnDeathDrop()
     {
         var dropPrefab = DropList.Instance.DropItem();
         if (dropPrefab == null) return;

@@ -1,1 +1,1 @@
-Nếu item này là resource thì thêm vào theo cơ chế của resource
+//Nếu chưa đủ gần thì enemy sẽ ko bắn

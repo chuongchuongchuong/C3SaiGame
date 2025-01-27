@@ -22,7 +22,7 @@ public class InputManager : ChuongMono
 
     [SerializeField] private Camera mainCamera;
 
-    protected override void LoadObjects_Reset()
+    protected override void Reset_LoadObjects()
     {
         mainCamera = Camera.main;
     }
