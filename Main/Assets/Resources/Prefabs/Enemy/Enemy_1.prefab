@@ -145,7 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 8572559640648073659}
-  canShoot: 0
 --- !u!1 &5388999863814856887
 GameObject:
   m_ObjectHideFlags: 0
