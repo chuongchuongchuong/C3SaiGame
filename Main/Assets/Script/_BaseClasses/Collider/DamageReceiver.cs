@@ -5,9 +5,5 @@ using UnityEngine;
 public class DamageReceiver : MonoBehaviour
 {
     public BaseHealth health;
-
-    private void Reset()
-    {
-        health = transform.parent.GetComponentInChildren<BaseHealth>();
-    }
+    private void Reset() => health = GetComponent<BaseHealth>();
 }

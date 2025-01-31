@@ -5,10 +5,7 @@ using UnityEngine;
 public class DropItemDespawn : BaseDespawn
 {
     private float spawnTime;
-    protected override void Awake_ResetValues()
-    {
-        poolList = DropItemPoolObject.Instance.poolList;
-    }
+    protected override List<Transform> GetPoolList() => DropItemPoolObject.Instance.poolList;
 
     protected void OnEnable() => spawnTime = Time.time;
     protected override void Start() => OnEnable();

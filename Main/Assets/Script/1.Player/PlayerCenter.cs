@@ -23,7 +23,6 @@ public class PlayerCenter : ChuongMono
     #endregion
 
     public playerMovement playerMovement;
-    public PlayerCollider playerCollider;
     public Looter looter;
     public PlayerShooting playerShooting;
     public BulletsList bulletsList;
@@ -33,7 +32,6 @@ public class PlayerCenter : ChuongMono
     protected override void Reset_LoadComponents()
     {
         playerMovement = GetComponentInChildren<playerMovement>();
-        playerCollider = GetComponentInChildren<PlayerCollider>();
         looter = GetComponentInChildren<Looter>();
         playerShooting = GetComponentInChildren<PlayerShooting>();
         bulletsList = GetComponentInChildren<BulletsList>();

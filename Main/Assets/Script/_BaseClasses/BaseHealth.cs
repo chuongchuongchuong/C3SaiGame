@@ -9,6 +9,8 @@ public abstract class BaseHealth : ChuongMono
     public bool isReceiveDamage = true;
 
     protected override void Awake_ResetValues() => healthPoint = maxHealth;
+    
+    protected virtual void OnEnable() => healthPoint = maxHealth;
 
     public virtual void TakeDamage(int damage) // nhận sát thương
     {

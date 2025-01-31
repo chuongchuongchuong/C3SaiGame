@@ -1,1 +1,1 @@
-//Nếu chưa đủ gần thì enemy sẽ ko bắn
+//Hàm để 1 vật đi xung quanh vật khác

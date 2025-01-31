@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Bullet1DamageSender : BaseDamageSender
 {
-    [SerializeField] private BaseDespawn _scriptBullet1Despawn;
+    #region Get Object Center
 
-    protected override void Reset_LoadComponents()
-    {
-        _scriptBullet1Despawn = transform.parent.GetComponentInChildren<BaseDespawn>();
-    }
+    [SerializeField] private Bullet_1center bullet_1center;
+    protected override void Reset_LoadObjectCenter() => bullet_1center = transform.parent.GetComponent<Bullet_1center>();
 
+    #endregion
+    
+    
     protected override void Awake_ResetValues()
     {
+        base.Awake_ResetValues();
         damage = 10;
     }
 
-    public override void SendDamage(BaseHealth health)
-    {
-        base.SendDamage(health);
-        _scriptBullet1Despawn.Despawn();
-    }
+    protected override BaseDespawn GetDespawn() => bullet_1center.Despawn;
 }

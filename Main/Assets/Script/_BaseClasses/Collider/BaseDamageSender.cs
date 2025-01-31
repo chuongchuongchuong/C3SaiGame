@@ -2,23 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseDamageSender : ChuongMono
+[RequireComponent(typeof(Collider2D))]
+public abstract class BaseDamageSender : ChuongMono
 {
-    [Header("Base Damage Sender")]
-    [SerializeField] protected int damage; //child class need to set value
-    [SerializeField] protected Transform explosionPrefab = null; // component that child class need to set
+    [Header("Base Damage Sender")] [SerializeField]
+    protected int damage; //child class need to set value
+    [SerializeField] protected DamageReceiver hitInfoDamageReceiver;
+    protected BaseDespawn despawn;
 
-    public virtual void SendDamage(BaseHealth health)
+    protected override void Awake_ResetValues()
     {
-        health.TakeDamage(damage);
-        InstantiateExplosion();
+        base.Awake_ResetValues();
+        despawn = GetDespawn();
+    }
+    
+    protected abstract BaseDespawn GetDespawn();
+
+    protected virtual void OnTriggerEnter2D(Collider2D hitFo)
+    {
+        if (!CansendDamage(hitFo)) return;
+        SendDamage(hitInfoDamageReceiver.health);
+        DespawnThisObject();
     }
 
-    private void InstantiateExplosion()
+    protected virtual bool CansendDamage(Collider2D hitInfo)
     {
-        if (explosionPrefab == null) return;
-        var explosion = Instantiate(explosionPrefab, transform.parent.position, Quaternion.identity);
-        Destroy(transform.parent.gameObject);
-        Destroy(explosion.gameObject, 3f);
+        hitInfoDamageReceiver = hitInfo.GetComponent<DamageReceiver>();
+        return hitInfoDamageReceiver != null;
+    }
+
+    public virtual void SendDamage(BaseHealth health) => health.TakeDamage(damage);
+
+    protected virtual void DespawnThisObject()
+    {
+        if (despawn != null) despawn.Despawn();
     }
 }

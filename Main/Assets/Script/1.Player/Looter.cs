@@ -5,21 +5,37 @@ using UnityEngine;
 
 public class Looter : ChuongMono
 {
+    #region Get Object Center
+
     public PlayerCenter playerCenter;
-    public bool canDespawnItem;
-    private Item lootItem;
+    protected override void Reset_LoadObjectCenter() => playerCenter = transform.parent.GetComponent<PlayerCenter>();
+
+    #endregion
 
     [SerializeField] protected List<Item> profiles;
 
-    protected override void Reset_LoadComponents()
-    {
-        playerCenter = transform.parent.GetComponent<PlayerCenter>();
-    }
+    public bool canDespawnItem;
+    private Item lootItem;
+    public PickableItem pickableItem;
+
 
     protected override void Reset_LoadObjects()
     {
         profiles = new List<Item>(Resources.LoadAll<Item>(StringKeeper.ItemPathFolder));
         lootItem = ScriptableObject.CreateInstance<Item>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (CanLoot(other)) Loot(pickableItem);
+    }
+
+    protected virtual bool CanLoot(Collider2D hitInfo)
+    {
+        pickableItem = hitInfo.GetComponent<PickableItem>();
+        if (pickableItem == null) return false;
+
+        return true;
     }
 
     public void Loot(PickableItem pickableItem)

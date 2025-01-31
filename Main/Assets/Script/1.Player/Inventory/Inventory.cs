@@ -47,7 +47,7 @@ public class Inventory : ChuongMono
         equipment = new Equipment()
         {
             itemProfile = pickedItem,
-            level = playerCenter.playerCollider.pickableItem.equipmentInfo.equipment.level
+            level = playerCenter.looter.pickableItem.equipmentInfo.equipment.level
         };
         equipments.Add(equipment); // Add thêm đồ vào equipments
         playerCenter.looter.canDespawnItem = true;

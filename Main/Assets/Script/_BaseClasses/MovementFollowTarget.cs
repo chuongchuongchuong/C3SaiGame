@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuongLibrary.GameDev;
+using ChuongLibrary.Game2D;
 
 public abstract class MovementFollowTarget : ChuongMono
 {
     protected float _speed;
     protected Vector3 _targetPosition;
 
-    protected virtual void Update() => Movement();
+    protected virtual void Update()
+    {
+        _targetPosition = GetTargetPosition();
+        Movement();
+    }
+
     protected virtual void Movement()
     {
-        DetermineTargetPosition();
+        RotateShip();
         FollowTarget();
     }
 
-    protected abstract void GetTargetPosition();
+    protected abstract Vector3 GetTargetPosition();
 
     protected virtual void FollowTarget()
     {
@@ -23,10 +28,8 @@ public abstract class MovementFollowTarget : ChuongMono
             _speed * Time.deltaTime);
     }
 
-    protected virtual void DetermineTargetPosition()
+    protected virtual void RotateShip()
     {
-        GetTargetPosition();
-        Game2D.LookAtTarget(transform.parent, _targetPosition);
+        LookAtTargetClass.LookAtTarget(transform.parent, _targetPosition, "");
     }
-    
 }
