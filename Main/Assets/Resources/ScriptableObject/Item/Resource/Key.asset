@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   itemName: 3
-  prefab: {fileID: 5775807220526221118, guid: 5a18e8b7a7da72f49a9372ac9e80335f, type: 3}
+  prefab: {fileID: 1315406618439626601, guid: 5a18e8b7a7da72f49a9372ac9e80335f, type: 3}
   itemType: 1
+  Uplevelrecipes: []

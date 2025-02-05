@@ -20,11 +20,14 @@ namespace ChuongLibrary.Game2D
 
         // Overload 2: theLooker là Transform.
         public static Quaternion LookAtTarget(Transform theLooker, Vector3 target, float offsetAngle = 0)
-            => LookAtTarget(theLooker.position, target, offsetAngle);
+        {
+            theLooker.rotation = LookAtTarget(theLooker.position, target, offsetAngle);
+            return theLooker.rotation;
+        }
 
         // Overload 3: theLooker, target là Transform.
         public static Quaternion LookAtTarget(Transform theLooker, Transform target, float offsetAngle = 0)
-            => LookAtTarget(theLooker.position, target.position, offsetAngle);
+            => LookAtTarget(theLooker, target.position, offsetAngle);
 
         // Overload 4: Hàm gốc nhưng trả về void
         public static void LookAtTarget(Transform theLooker, Vector3 target, string forVoid, float offsetAngle = 0)

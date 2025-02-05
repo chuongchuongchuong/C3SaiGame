@@ -5,31 +5,16 @@ using ChuongLibrary.Game2D;
 
 public abstract class MovementFollowTarget : ChuongMono
 {
-    protected float _speed;
+    [SerializeField] protected float _speed;
     protected Vector3 _targetPosition;
 
-    protected virtual void Update()
-    {
-        _targetPosition = GetTargetPosition();
-        Movement();
-    }
-
-    protected virtual void Movement()
-    {
-        RotateShip();
-        FollowTarget();
-    }
-
-    protected abstract Vector3 GetTargetPosition();
-
+    protected virtual void Update() => FollowTarget();
+    
     protected virtual void FollowTarget()
     {
-        transform.parent.position = Vector3.Lerp(transform.parent.position, _targetPosition,
+        transform.parent.position = Vector3.Lerp(transform.parent.position, GetTargetPosition(),
             _speed * Time.deltaTime);
     }
 
-    protected virtual void RotateShip()
-    {
-        LookAtTargetClass.LookAtTarget(transform.parent, _targetPosition, "");
-    }
+    protected abstract Vector3 GetTargetPosition();
 }

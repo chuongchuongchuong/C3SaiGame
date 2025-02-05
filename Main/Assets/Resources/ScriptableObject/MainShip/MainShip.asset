@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3232f3ebdbd71c34088fe3f4d454d515, type: 3}
   m_Name: MainShip
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  fireRate: 0.5
+  moveSpeed: 1.5
+  fireRate: 0.05
   bulletSpeed: 5
   rotSpeed: 5

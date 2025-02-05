@@ -8,7 +8,7 @@ public class Inventory : ChuongMono
     [SerializeField] protected int equipMaxSlot = 6;
     [SerializeField] protected int resourceMaxSlot = 7;
     [SerializeField] protected PlayerCenter playerCenter;
-    
+
 
     [Header("Equipment")] [SerializeField] public List<Equipment> equipments;
     protected Equipment equipment;
@@ -43,12 +43,8 @@ public class Inventory : ChuongMono
     {
         if (equipments.Count == equipMaxSlot) return; //Nhiều nhất là 6 slot đồ
         if (IsTheEquipmentExistsInInventory(pickedItem)) return; //Nếu đồ này bị trùng thì sẽ ko add thêm nữa
-        
-        equipment = new Equipment()
-        {
-            itemProfile = pickedItem,
-            level = playerCenter.looter.pickableItem.equipmentInfo.equipment.level
-        };
+
+        equipment = new Equipment(pickedItem, playerCenter.looter.pickableItem.equipmentCenter.equipmentInfo.level);
         equipments.Add(equipment); // Add thêm đồ vào equipments
         playerCenter.looter.canDespawnItem = true;
     }
@@ -111,5 +107,11 @@ public class Equipment
 {
     public Item itemProfile;
 
-    public int level = 1;
+    public int level;
+
+    public Equipment(Item itemProfile, int level = 1)
+    {
+        this.itemProfile = itemProfile;
+        this.level = level;
+    }
 }

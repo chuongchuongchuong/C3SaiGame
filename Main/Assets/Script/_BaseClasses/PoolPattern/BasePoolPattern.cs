@@ -1,14 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public abstract class BasePoolPattern : ChuongMono
 {
     public List<Transform> poolList = new();
 
+
+    [CanBeNull]
     public virtual Transform Spawn(Transform prefab, Vector3 position, Quaternion rotation)
     {
+        if (prefab == null) return null;
         var takenObject = GetObjectFromPool(prefab);
-        
+
         // nếu lấy được prefab trong pool, thì sẽ bật Active lại viên đạn dó
         if (takenObject != null) return RespawnFromPool(takenObject, position, rotation);
         else return SpawnNewPrefab(prefab, position, rotation); // nếu ko lấy được thì tạo prefab mới

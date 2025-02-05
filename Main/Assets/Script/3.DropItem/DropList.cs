@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class DropList : BaseList<DropItemDataStruct>
@@ -27,13 +28,14 @@ public class DropList : BaseList<DropItemDataStruct>
     }
 
 
-    public GameObject DropItem()
+    [CanBeNull]
+    public Transform RandomDropItem()
     {
         var ramdomNum = Random.Range(0f, 100f);
         Debug.Log(ramdomNum);
         for (var i = List.Count - 1; i >= 0; i--)
         {
-            if (ramdomNum <= List[i].dropRate) return List[i].prefab;
+            if (ramdomNum <= List[i].dropRate) return List[i].prefab.transform;
         }
 
         return null;

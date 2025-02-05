@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PickableItem : ChuongMono
 {
-    public BaseDespawn despawner;
-    public EquipmentInfo equipmentInfo;
+    #region Get Object Center
 
-    protected override void Reset_LoadComponents()
-    {
-        despawner = transform.parent.GetComponentInChildren<BaseDespawn>();
-        equipmentInfo= transform.parent.GetComponent<EquipmentInfo>();
-    }
+    public EquipmentCenter equipmentCenter;
+    protected override void LoadObjectCenter() => equipmentCenter = transform.parent.GetComponent<EquipmentCenter>();
 
-    protected override void Awake_ResetValues()
-    {
-        //itemName = (ItemName)System.Enum.Parse(typeof(ItemName),transform.parent.name.Replace("(clone)",""));
-    }
+    #endregion
 }

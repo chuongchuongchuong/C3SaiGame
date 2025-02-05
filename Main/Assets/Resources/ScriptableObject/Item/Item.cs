@@ -7,7 +7,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public ItemName itemName = ItemName.NoItem;
-    public GameObject prefab;
+    public Transform prefab;
     public ItemType itemType = ItemType.NoType;
 
     public List<Recipe> Uplevelrecipes;

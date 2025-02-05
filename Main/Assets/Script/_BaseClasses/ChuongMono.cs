@@ -5,7 +5,7 @@ public abstract class ChuongMono : MonoBehaviour
     protected virtual void Reset()
     {
         GuaranteeSingleton();
-        Reset_LoadObjectCenter();
+        LoadObjectCenter();
         Reset_LoadObjects();
         Reset_LoadComponents();
     }
@@ -13,6 +13,7 @@ public abstract class ChuongMono : MonoBehaviour
     protected virtual void Awake()
     {
         GuaranteeSingleton();
+        LoadObjectCenter();
         Awake_ResetValues();
         Awake_Others();
     }
@@ -25,7 +26,7 @@ public abstract class ChuongMono : MonoBehaviour
     
     // @formatter:off
     protected virtual void GuaranteeSingleton(){}
-    protected virtual void Reset_LoadObjectCenter(){}
+    protected virtual void LoadObjectCenter(){}
     protected virtual void Reset_LoadComponents(){}
     protected virtual void Reset_LoadObjects(){}
     protected virtual void Awake_ResetValues(){}

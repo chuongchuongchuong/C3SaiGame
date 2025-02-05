@@ -14,9 +14,4 @@ public class playerMovement : MovementFollowTarget
     }
 
     protected override Vector3 GetTargetPosition() => InputManager.Instance.mouseWorldPos; // Get the mouse position
-
-    protected override void RotateShip()
-    {
-        ChuongLibrary.Game2D.LookAtTargetClass.GraduallyLookAtTarget(transform.parent, rotSpeed, _targetPosition);
-    }
 }

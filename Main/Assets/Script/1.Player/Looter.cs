@@ -8,7 +8,7 @@ public class Looter : ChuongMono
     #region Get Object Center
 
     public PlayerCenter playerCenter;
-    protected override void Reset_LoadObjectCenter() => playerCenter = transform.parent.GetComponent<PlayerCenter>();
+    protected override void LoadObjectCenter() => playerCenter ??= transform.parent.GetComponent<PlayerCenter>();
 
     #endregion
 
@@ -46,14 +46,13 @@ public class Looter : ChuongMono
 
         if (!IsTheItemExists(itemName)) return;
 
-        if (lootItem.itemType == ItemType.Equipment) playerCenter.inventory.AddAnEquipment(lootItem);
-        else if (lootItem.itemType == ItemType.Resource) playerCenter.inventory.AddResource(lootItem, 1);
+        if (lootItem.itemType == ItemType.Equipment)
+            playerCenter.inventory.AddAnEquipment(lootItem);
+        else if (lootItem.itemType == ItemType.Resource)
+            playerCenter.inventory.AddResource(lootItem, 1);
         else return;
-
-        //Debug.Log(canDespawnItem);
-        if (!canDespawnItem) return;
-        pickableItem.despawner.Despawn();
-        canDespawnItem = false;
+        
+        pickableItem.equipmentCenter.despawner.IsLooted = true;
     }
 
     private bool IsTheItemExists(ItemName itemName)

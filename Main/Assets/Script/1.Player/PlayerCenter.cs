@@ -25,7 +25,6 @@ public class PlayerCenter : ChuongMono
     public playerMovement playerMovement;
     public Looter looter;
     public PlayerShooting playerShooting;
-    public BulletsList bulletsList;
     public PlayerHealth playerHealth;
     public Inventory inventory;
 
@@ -34,7 +33,6 @@ public class PlayerCenter : ChuongMono
         playerMovement = GetComponentInChildren<playerMovement>();
         looter = GetComponentInChildren<Looter>();
         playerShooting = GetComponentInChildren<PlayerShooting>();
-        bulletsList = GetComponentInChildren<BulletsList>();
         playerHealth = GetComponentInChildren<PlayerHealth>();
         inventory = GetComponentInChildren<Inventory>();
     }

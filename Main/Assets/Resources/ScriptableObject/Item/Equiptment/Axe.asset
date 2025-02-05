@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   itemName: 2
-  prefab: {fileID: 2784410588801193179, guid: 62cecdba934a0dc4ca4d3f6a687bc1db, type: 3}
+  prefab: {fileID: 7260576539333655692, guid: 62cecdba934a0dc4ca4d3f6a687bc1db, type: 3}
   itemType: 2
   Uplevelrecipes:
   - ingredients:

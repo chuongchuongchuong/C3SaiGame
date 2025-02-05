@@ -8,14 +8,14 @@ public abstract class BaseDamageSender : ChuongMono
     [Header("Base Damage Sender")] [SerializeField]
     protected int damage; //child class need to set value
     [SerializeField] protected DamageReceiver hitInfoDamageReceiver;
-    protected BaseDespawn despawn;
 
     protected override void Awake_ResetValues()
     {
         base.Awake_ResetValues();
-        despawn = GetDespawn();
+        damage = SetDamage();
     }
     
+    protected abstract int SetDamage();
     protected abstract BaseDespawn GetDespawn();
 
     protected virtual void OnTriggerEnter2D(Collider2D hitFo)
@@ -35,6 +35,7 @@ public abstract class BaseDamageSender : ChuongMono
 
     protected virtual void DespawnThisObject()
     {
-        if (despawn != null) despawn.Despawn();
+        var despawn = GetDespawn();   
+        if (despawn != null) despawn.Despawn(transform.parent, despawn.GetPoolList());
     }
 }

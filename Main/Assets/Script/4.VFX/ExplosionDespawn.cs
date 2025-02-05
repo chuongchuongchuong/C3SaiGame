@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionDeath : BaseDespawn
+public class ExplosionDespawn : BaseDespawn
 {
-    protected override List<Transform> GetPoolList() => VFXPoolObject.Instance.poolList;
+    public override List<Transform> GetPoolList() => PoolObjectCenter.Instance.vfx.poolList;
     
     private float spawnTime;
 

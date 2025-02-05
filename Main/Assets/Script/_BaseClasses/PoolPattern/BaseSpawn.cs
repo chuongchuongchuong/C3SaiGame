@@ -9,11 +9,19 @@ public abstract class BaseSpawn : ChuongMono
 
     protected virtual void Spawner()
     {
-        if (CanSpawn()) Spawn();
+        if (!CanSpawn()) return;
+        Spawn();
     }
 
-    // @formatter:off
-    protected virtual bool CanSpawn()=> false;
-    protected virtual void Spawn(){}
-    // @formatter:on
+    protected virtual bool CanSpawn() => false;
+
+    public virtual Transform Spawn() => GetPoolPattern().Spawn(GetPrefab(), GetSpawnPosition(), GetSpawnRotation());
+
+    protected abstract BasePoolPattern GetPoolPattern();
+
+    protected abstract Transform GetPrefab();
+
+    protected abstract Vector3 GetSpawnPosition();
+
+    protected abstract Quaternion GetSpawnRotation();
 }

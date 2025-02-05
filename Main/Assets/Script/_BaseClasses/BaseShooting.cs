@@ -4,27 +4,25 @@ using UnityEngine;
 
 public abstract class BaseShooting : BaseSpawn
 {
-    protected float _fireRate; // fire speed
-    protected float _lastTimeShot;
-    protected Transform bulletPrefab;
+    [SerializeField] protected float _fireRate; // fire speed
+    [SerializeField] protected float _lastTimeShot;
 
-    protected override bool CanSpawn()
+    protected override void Awake_ResetValues()
     {
-        // if not pressin left click, nothing
-        if (InputManager.Instance.onFiring != 1) return false;
-        // if pressin left click, but not enough the cooldown time, nothing
-        if (Time.time - _lastTimeShot < _fireRate) return false;
-
-        return true;
+        base.Awake_ResetValues();
+        _fireRate = GetFireRate();
     }
 
-    protected override void Spawn()
-    {
-        bulletPrefab=GetBulletPrefab();
-        BulletPoolObject.Instance.Spawn(bulletPrefab, transform.position, transform.parent.rotation);
+    protected abstract float GetFireRate();
+    
+    protected override BasePoolPattern GetPoolPattern() => PoolObjectCenter.Instance.bullet;
 
+    protected override bool CanSpawn() => Time.time - _lastTimeShot > _fireRate;
+    protected override void Spawner()
+    {
+        if (!CanSpawn()) return;
+        Spawn();
         _lastTimeShot = Time.time;
+        //Debug.Log("s");
     }
-
-    protected abstract Transform GetBulletPrefab();
 }

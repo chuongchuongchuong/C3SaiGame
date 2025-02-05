@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7794918589883823005}
   - component: {fileID: 7220842641977079245}
   m_Layer: 0
-  m_Name: Death
+  m_Name: Despawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729e7138201f6f42a41f4c78877c3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLooted: 0
 --- !u!1 &4930288249047781337
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,8 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1e9c94c6b41164b96cb06c741ad4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawner: {fileID: 7220842641977079245}
-  itemName: 3
+  equipmentCenter: {fileID: 0}
 --- !u!58 &3371265354914171996
 CircleCollider2D:
   m_ObjectHideFlags: 0

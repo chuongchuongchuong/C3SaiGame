@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260576539333655692}
-  - component: {fileID: 2551925718626047237}
+  - component: {fileID: 2692743665014655310}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2551925718626047237
+--- !u!114 &2692743665014655310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,9 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2784410588801193179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d6178b65874cb40ad20b194de5b404, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bcb6f058205c504583667da0b272758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawner: {fileID: 142218206313867330}
+  equipmentInfo:
+    itemProfile: {fileID: 11400000, guid: a54da3b0e3f9f9645982e614b043d7fc, type: 2}
+    level: 1
 --- !u!1 &3668212370293414972
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1e9c94c6b41164b96cb06c741ad4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawner: {fileID: 142218206313867330}
+  equipmentCenter: {fileID: 0}
 --- !u!58 &1575015781707696479
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +208,7 @@ GameObject:
   - component: {fileID: 1971713233235366968}
   - component: {fileID: 142218206313867330}
   m_Layer: 0
-  m_Name: Death
+  m_Name: Despawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,3 +241,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729e7138201f6f42a41f4c78877c3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLooted: 0

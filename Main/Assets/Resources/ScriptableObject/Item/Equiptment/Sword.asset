@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemName: 1
-  prefab: {fileID: 6032948853680750583, guid: df85e9dbcb6c4934d9175dce10d21500, type: 3}
+  prefab: {fileID: 1287992444476790688, guid: df85e9dbcb6c4934d9175dce10d21500, type: 3}
   itemType: 2
   Uplevelrecipes:
   - ingredients:
