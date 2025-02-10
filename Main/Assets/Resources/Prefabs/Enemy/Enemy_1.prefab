@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6459219798929496619}
   - component: {fileID: 5909799358030142852}
+  - component: {fileID: 4154037260823153798}
   - component: {fileID: 3577715924739176919}
   m_Layer: 6
   m_Name: Model
@@ -85,6 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4154037260823153798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136028213262987111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c76eb1396e20a4b977d4b827303301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy1Center: {fileID: 8572559640648073659}
+  appearDuration: 1
 --- !u!114 &3577715924739176919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,9 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2830a44ba1c26b5459a4c35b25fcd677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy1Center: {fileID: 8572559640648073659}
   rotSpeed: 1
-  appearDuration: 3
 --- !u!1 &3620279163684800910
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d268d119be31c824d8e73d363fb4e7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 3577715924739176919}
+  modelRotation: {fileID: 3577715924739176919}
+  modelOnAppear: {fileID: 4154037260823153798}
   movement_FollowTarget: {fileID: 8060620544263621711}
   Movement_Forward: {fileID: 8502290081213282760}
   shooting: {fileID: 4743192432436259883}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MainShip
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  fireRate: 0.05
+  fireRate: 0.3
   bulletSpeed: 5
   rotSpeed: 5
